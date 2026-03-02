@@ -1,6 +1,6 @@
 {
   "name": "place_details",
-  "description": "Get detailed information about a place, including ratings, opening hours, phone number, website, and reviews.",
+  "description": "Get detailed information about a place, including ratings, a composite score, opening hours, phone number, website, editorial summary, and reviews.",
   "entrypoint": "run.py",
   "parameters": {
     "place_id": {

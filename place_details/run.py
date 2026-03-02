@@ -13,6 +13,12 @@ import requests
 
 KNOWN_PARAMS = {"place_id"}
 
+# Bayesian average constants: C is the prior mean rating, m is the weight given to the
+# prior (equivalent to the number of "virtual" reviews anchoring toward C). These values
+# were chosen to reflect a reasonable prior for Google Maps data.
+BAYESIAN_PRIOR_MEAN = 4.2
+BAYESIAN_PRIOR_WEIGHT = 200
+
 # Only request the fields we display to avoid billing for unused data.
 FIELD_MASK = (
     "displayName,"
@@ -23,8 +29,19 @@ FIELD_MASK = (
     "userRatingCount,"
     "priceLevel,"
     "currentOpeningHours,"
+    "editorialSummary,"
     "reviews"
 )
+
+
+def compute_score(rating: float | None, rating_count: int | None) -> float | None:
+    if rating is None or rating_count is None:
+        return None
+    score = (
+        (rating_count / (rating_count + BAYESIAN_PRIOR_WEIGHT)) * rating
+        + (BAYESIAN_PRIOR_WEIGHT / (rating_count + BAYESIAN_PRIOR_WEIGHT)) * BAYESIAN_PRIOR_MEAN
+    )
+    return round(score, 2)
 
 
 def transform_review(review: dict[str, Any]) -> dict[str, Any]:
@@ -53,16 +70,20 @@ def transform_place(place: dict[str, Any]) -> dict[str, Any]:
         reviews = [transform_review(r) for r in place["reviews"][:5]]
 
     price_level = place.get("priceLevel")
+    rating = place.get("rating")
+    rating_count = place.get("userRatingCount")
     return {
         "name": place.get("displayName", {}).get("text"),
         "address": place.get("formattedAddress"),
         "phone": place.get("internationalPhoneNumber"),
         "website": place.get("websiteUri"),
-        "rating": place.get("rating"),
-        "rating_count": place.get("userRatingCount"),
+        "rating": rating,
+        "rating_count": rating_count,
+        "score": compute_score(rating, rating_count),
         "price_level": price_level.removeprefix("PRICE_LEVEL_") if price_level is not None else None,
         "open_now": open_now,
         "opening_hours": opening_hours,
+        "editorial_summary": place.get("editorialSummary", {}).get("text"),
         "reviews": reviews,
     }
 
