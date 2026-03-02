@@ -1,0 +1,19 @@
+{
+  "name": "search_places",
+  "description": "Search for places by text query. Returns names, addresses, ratings, and a composite score that accounts for both rating and number of reviews (Bayesian average). Results are sorted by score.",
+  "entrypoint": "run.py",
+  "parameters": {
+    "query": {
+      "type": "string",
+      "description": "Search query, e.g. 'pizza near Times Square' or 'pharmacies in Berlin'."
+    },
+    "min_rating": {
+      "type": "number",
+      "description": "Minimum rating filter (1.0 to 4.5, in 0.5 increments). Optional."
+    },
+    "open_now": {
+      "type": "boolean",
+      "description": "Only return places that are currently open. Optional."
+    }
+  }
+}

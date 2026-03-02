@@ -1,0 +1,10 @@
+{
+  "name": "google-maps",
+  "description": "Search for places and get details like ratings, opening hours, and reviews using Google Maps.",
+  "config": {
+    "api_key": {
+      "description": "Google Maps API key with Places API (New) enabled.",
+      "required": true
+    }
+  }
+}

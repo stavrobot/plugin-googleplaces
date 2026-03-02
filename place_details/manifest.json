@@ -1,0 +1,11 @@
+{
+  "name": "place_details",
+  "description": "Get detailed information about a place, including ratings, opening hours, phone number, website, and reviews.",
+  "entrypoint": "run.py",
+  "parameters": {
+    "place_id": {
+      "type": "string",
+      "description": "The place ID, as returned by search_places."
+    }
+  }
+}
