@@ -1,6 +1,6 @@
-# Google Maps plugin
+# Google Places plugin
 
-A Stavrobot plugin for searching places and retrieving details using the Google Maps Places API (New).
+A Stavrobot plugin for searching places and retrieving details using the Google Places API (New).
 
 ## Tools
 
@@ -29,12 +29,12 @@ Get detailed information about a specific place by its ID (as returned by `searc
 Tell Stavrobot to install this plugin:
 
 ```
-install plugin https://github.com/stavrobot/plugin-googlemaps
+install plugin https://github.com/stavrobot/plugin-googleplaces
 ```
 
 ## Configuration
 
-You need a Google Maps API key with the **Places API (New)** enabled.
+You need a Google API key with the **Places API (New)** enabled.
 
 To obtain one:
 
@@ -46,5 +46,5 @@ To obtain one:
 Once you have the key, configure the plugin:
 
 ```
-configure plugin google-maps api_key <your-api-key>
+configure plugin google-places api_key <your-api-key>
 ```

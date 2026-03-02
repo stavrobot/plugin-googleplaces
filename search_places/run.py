@@ -15,7 +15,7 @@ KNOWN_PARAMS = {"query", "min_rating", "open_now"}
 
 # Bayesian average constants: C is the prior mean rating, m is the weight given to the
 # prior (equivalent to the number of "virtual" reviews anchoring toward C). These values
-# were chosen to reflect a reasonable prior for Google Maps data.
+# were chosen to reflect a reasonable prior for Google Places data.
 BAYESIAN_PRIOR_MEAN = 4.2
 BAYESIAN_PRIOR_WEIGHT = 200
 
