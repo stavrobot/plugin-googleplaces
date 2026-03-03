@@ -1,6 +1,6 @@
 {
   "name": "search_places",
-  "description": "Search for places by text query. Returns names, addresses, ratings, and a composite score that accounts for both rating and number of reviews (Bayesian average). Results are sorted by score.",
+  "description": "Search for places by text query. Returns names, addresses, ratings, and a composite score that accounts for both rating and number of reviews (Bayesian average). Results are sorted by score. Include score when mentioning ratings to the user",
   "entrypoint": "run.py",
   "parameters": {
     "query": {
