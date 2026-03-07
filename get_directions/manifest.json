@@ -1,0 +1,27 @@
+{
+  "name": "get_directions",
+  "description": "Get directions between two locations using the Google Routes API. Returns distance, duration, and turn-by-turn steps. Note: arrival_time only works with TRANSIT travel mode.",
+  "entrypoint": "run.py",
+  "parameters": {
+    "origin": {
+      "type": "string",
+      "description": "Origin address or place name."
+    },
+    "destination": {
+      "type": "string",
+      "description": "Destination address or place name."
+    },
+    "travel_mode": {
+      "type": "string",
+      "description": "Travel mode: DRIVE, WALK, BICYCLE, or TRANSIT. Defaults to DRIVE. Optional."
+    },
+    "departure_time": {
+      "type": "string",
+      "description": "RFC 3339 timestamp for when to depart. Optional."
+    },
+    "arrival_time": {
+      "type": "string",
+      "description": "RFC 3339 timestamp for desired arrival time. Only valid for TRANSIT travel mode. Optional."
+    }
+  }
+}
